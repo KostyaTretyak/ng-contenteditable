@@ -33,7 +33,7 @@ export class ContenteditableDirective implements ControlValueAccessor
   }
 
   @HostListener('blur')
-  callonTouched()
+  callOnTouched()
   {
     if(typeof this.onTouched == 'function')
       this.onTouched();

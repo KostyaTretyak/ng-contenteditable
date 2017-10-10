@@ -5,7 +5,7 @@ It just implements [ControlValueAccessor](https://angular.io/api/forms/ControlVa
 
 # Install
 
-You can just copy and paste this [directive](src/index.ts) or install from npm:
+You can just copy and paste this [directive](src/index.ts) or install it from npm:
 
 ```bash
 npm install ng-contenteditable --save
@@ -30,7 +30,7 @@ import { ContenteditableDirective } from 'ng-contenteditable';
 })
 ```
 
-And then you can using it in [template-driven forms](https://angular.io/guide/forms) or in [reactive forms](https://angular.io/guide/reactive-forms) like this:
+And then you can to use it in [template-driven forms](https://angular.io/guide/forms) or in [reactive forms](https://angular.io/guide/reactive-forms) like this:
 
 ```html
 <form #testForm="ngForm">
@@ -59,7 +59,7 @@ With `contenteditable` directive you can pass optional `@Input` value for `propV
   >This is contenteditable text</p>
 ```
 
-In `ContenteditableDirective` this value using like this:
+In `ContenteditableDirective` this value use like this:
 
 ```ts
 this.elementRef.nativeElement[this.propValueAccesor]
