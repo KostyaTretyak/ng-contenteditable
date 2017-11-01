@@ -16,6 +16,7 @@ npm install ng-contenteditable --save
 Import and add `ContenteditableDirective` to your module:
 
 ```ts
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContenteditableDirective } from 'ng-contenteditable';
 
 // ...
@@ -24,25 +25,54 @@ import { ContenteditableDirective } from 'ng-contenteditable';
   declarations: [
     ContenteditableDirective
   ],
+  imports: [
+    // Import one or both of this modules
+    FormsModule,
+    ReactiveFormsModule
+  ]
 
 // ...
 
 })
 ```
 
-And then you can to use it in [template-driven forms](https://angular.io/guide/forms) or in [reactive forms](https://angular.io/guide/reactive-forms) like this:
+And then you can to use it in [template-driven forms](https://angular.io/guide/forms) like this:
 
 ```html
 <form #testForm="ngForm">
   <p
     contenteditable="true"
     name="myFormName"
-    [(ngModel)]="title"
-    >This is contenteditable text</p>
+    [(ngModel)]="'This is contenteditable text for template form'"
+    ></p>
 </form>
 
 <pre>
   {{ testForm.value | json }}
+</pre>
+```
+
+You can also use [reactive forms](https://angular.io/guide/reactive-forms) like this:
+
+```ts
+// In your component
+import { FormControl } from '@angular/forms';
+
+export class MyComponent {
+  myControl = new FormControl;
+
+  ngOnInit()
+  {
+    this.myControl.setValue(`This is contenteditable text for reactive form`);
+  }
+}
+```
+
+```html
+<p contenteditable="true" [formControl]="myControl"></p>
+
+<pre>
+  {{ myControl.value | json }}
 </pre>
 ```
 
@@ -53,10 +83,9 @@ With `contenteditable` directive you can pass optional `@Input` value for `propV
 ```html
 <p
   contenteditable="true"
-  propValueAccesor="innerText"
-  name="myFormName"
-  [(ngModel)]="title"
-  >This is contenteditable text</p>
+  propValueAccesor="innerHTML"
+  [formControl]="myControl"
+  ></p>
 ```
 
 In `ContenteditableDirective` this value use like this:

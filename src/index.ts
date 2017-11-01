@@ -22,21 +22,20 @@ export class ContenteditableDirective implements ControlValueAccessor
 
   private onChange: (value: string) => void;
   private onTouched: () => void;
+  private removeDisabledState: () => void;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2){}
 
   @HostListener('input')
   callOnChange()
   {
-    if(typeof this.onChange == 'function')
-      this.onChange(this.elementRef.nativeElement[this.propValueAccesor]);
+    this.onChange(this.elementRef.nativeElement[this.propValueAccesor]);
   }
 
   @HostListener('blur')
   callOnTouched()
   {
-    if(typeof this.onTouched == 'function')
-      this.onTouched();
+    this.onTouched();
   }
 
   /**
@@ -48,7 +47,8 @@ export class ContenteditableDirective implements ControlValueAccessor
    */
   writeValue(value: any): void
   {
-    this.renderer.setProperty(this.elementRef.nativeElement, this.propValueAccesor, value);
+    const normalizedValue = value == null ? '' : value;
+    this.renderer.setProperty(this.elementRef.nativeElement, this.propValueAccesor, normalizedValue);
   }
 
   /**
@@ -57,11 +57,8 @@ export class ContenteditableDirective implements ControlValueAccessor
    * 
    * This is called by the forms API on initialization so it can update
    * the form model when values propagate from the view (view -> model).
-   * 
-   * If you are implementing `registerOnChange` in your own value accessor,
-   * you will typically want to save the given function so your class can call it at the appropriate time.
    */
-  registerOnChange(fn: any): void
+  registerOnChange(fn: () => void): void
   {
     this.onChange = fn;
   }
@@ -69,11 +66,8 @@ export class ContenteditableDirective implements ControlValueAccessor
   /**
    * Registers a callback function that should be called when the control receives a blur event.
    * This is called by the forms API on initialization so it can update the form model on blur.
-   * 
-   * If you are implementing registerOnTouched in your own value accessor, you will typically want
-   * to save the given function so your class can call it when the control should be considered blurred (a.k.a. "touched").
    */
-  registerOnTouched(fn: any): void
+  registerOnTouched(fn: () => void): void
   {
     this.onTouched = fn;
   }
@@ -84,6 +78,20 @@ export class ContenteditableDirective implements ControlValueAccessor
    */
   setDisabledState(isDisabled: boolean): void
   {
-    this.renderer.setProperty(this.elementRef.nativeElement, 'disabled', isDisabled);
+    if(isDisabled)
+    {
+      this.renderer.setAttribute(this.elementRef.nativeElement, 'disabled', 'true');
+      this.removeDisabledState = this.renderer.listen(this.elementRef.nativeElement, 'keydown', this.listenerDisabledState);
+    }
+    else
+    {
+      this.renderer.removeAttribute(this.elementRef.nativeElement, 'disabled');
+      this.removeDisabledState();
+    }
+  }
+
+  private listenerDisabledState(e: KeyboardEvent)
+  {
+    e.preventDefault();
   }
 }
