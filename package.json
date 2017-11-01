@@ -1,6 +1,6 @@
 {
   "name": "ng-contenteditable",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
   "description": "Angular v4+ contenteditable directive for compatibility with Angular forms",
   "main": "dist/index",
   "typings": "dist/index",
