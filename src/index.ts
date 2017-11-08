@@ -85,8 +85,11 @@ export class ContenteditableDirective implements ControlValueAccessor
     }
     else
     {
-      this.renderer.removeAttribute(this.elementRef.nativeElement, 'disabled');
-      this.removeDisabledState();
+      if(this.removeDisabledState)
+      {
+        this.renderer.removeAttribute(this.elementRef.nativeElement, 'disabled');
+        this.removeDisabledState();
+      }
     }
   }
 
