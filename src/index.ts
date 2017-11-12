@@ -29,13 +29,15 @@ export class ContenteditableDirective implements ControlValueAccessor
   @HostListener('input')
   callOnChange()
   {
-    this.onChange(this.elementRef.nativeElement[this.propValueAccesor]);
+    if(typeof this.onChange == 'function')
+      this.onChange(this.elementRef.nativeElement[this.propValueAccesor]);
   }
 
   @HostListener('blur')
   callOnTouched()
   {
-    this.onTouched();
+    if(typeof this.onTouched == 'function')
+      this.onTouched();
   }
 
   /**
