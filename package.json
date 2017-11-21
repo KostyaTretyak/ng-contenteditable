@@ -1,6 +1,6 @@
 {
   "name": "ng-contenteditable",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Angular v4+ contenteditable directive for compatibility with Angular forms",
   "main": "dist/index",
   "typings": "src/index",
@@ -16,11 +16,9 @@
   "bugs": {
     "url": "https://github.com/KostyaTretyak/ng-contenteditable/issues"
   },
-  "dependencies": {
-    "@angular/core": "^4.4.4",
-    "@angular/forms": "^4.4.4"
-  },
   "devDependencies": {
+    "@angular/core": "^5.0.2",
+    "@angular/forms": "^5.0.2",
     "typescript": "^2.5.3"
   },
   "keywords": [
