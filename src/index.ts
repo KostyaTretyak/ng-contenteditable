@@ -4,7 +4,8 @@ import {
   Renderer2,
   HostListener,
   forwardRef,
-  Input
+  Input,
+  OnInit
 } from '@angular/core';
 
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -16,9 +17,18 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ContenteditableDirective), multi: true}
   ]
 })
-export class ContenteditableDirective implements ControlValueAccessor
+export class ContenteditableDirective implements ControlValueAccessor, OnInit
 {
-  @Input() propValueAccesor: string = 'textContent';
+  @Input() propValueAccessor: string = 'textContent';
+
+  /**
+   * This property is deprecated, use `propValueAccessor` instead.
+   * 
+   * See [#7](https://github.com/KostyaTretyak/ng-contenteditable/issues/7);
+   * 
+   * @deprecated
+   */
+  @Input() propValueAccesor: string;
 
   private onChange: (value: string) => void;
   private onTouched: () => void;
@@ -26,11 +36,16 @@ export class ContenteditableDirective implements ControlValueAccessor
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2){}
 
+  ngOnInit()
+  {
+    this.propValueAccessor = this.propValueAccesor || this.propValueAccessor;
+  }
+
   @HostListener('input')
   callOnChange()
   {
     if(typeof this.onChange == 'function')
-      this.onChange(this.elementRef.nativeElement[this.propValueAccesor]);
+      this.onChange(this.elementRef.nativeElement[this.propValueAccessor]);
   }
 
   @HostListener('blur')
@@ -50,7 +65,7 @@ export class ContenteditableDirective implements ControlValueAccessor
   writeValue(value: any): void
   {
     const normalizedValue = value == null ? '' : value;
-    this.renderer.setProperty(this.elementRef.nativeElement, this.propValueAccesor, normalizedValue);
+    this.renderer.setProperty(this.elementRef.nativeElement, this.propValueAccessor, normalizedValue);
   }
 
   /**

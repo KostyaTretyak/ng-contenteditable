@@ -78,12 +78,12 @@ export class MyComponent {
 
 # Options
 
-With `contenteditable` directive you can pass optional `@Input` value for `propValueAccesor`:
+With `contenteditable` directive you can pass optional `@Input` value for `propValueAccessor`:
 
 ```html
 <p
   contenteditable="true"
-  propValueAccesor="innerHTML"
+  propValueAccessor="innerHTML"
   [formControl]="myControl"
   ></p>
 ```
@@ -91,7 +91,7 @@ With `contenteditable` directive you can pass optional `@Input` value for `propV
 In `ContenteditableDirective` this value use like this:
 
 ```ts
-this.elementRef.nativeElement[this.propValueAccesor]
+this.elementRef.nativeElement[this.propValueAccessor]
 ```
 
 By default it using `textContent`.
