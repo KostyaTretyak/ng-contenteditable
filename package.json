@@ -1,0 +1,31 @@
+{
+  "name": "ng-contenteditable",
+  "version": "1.0.5",
+  "description": "Angular v4+ contenteditable directive for compatibility with Angular forms",
+  "main": "dist/index",
+  "typings": "src/index",
+  "directories": {
+    "lib": "src"
+  },
+  "format": "es2015",
+  "homepage": "https://github.com/KostyaTretyak/ng-contenteditable",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/KostyaTretyak/ng-contenteditable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KostyaTretyak/ng-contenteditable/issues"
+  },
+  "devDependencies": {
+    "@angular/core": "^5.0.2",
+    "@angular/forms": "^5.0.2",
+    "typescript": "^2.5.3"
+  },
+  "keywords": [
+    "ng",
+    "angular",
+    "contenteditable"
+  ],
+  "author": "Костя Третяк <ktretiak.in.ua@gmail.com>",
+  "license": "MIT"
+}
