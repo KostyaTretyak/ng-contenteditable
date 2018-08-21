@@ -1,0 +1,29 @@
+{
+  "name": "ng-contenteditable",
+  "version": "2.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KostyaTretyak/ng-contenteditable"
+  },
+  "author": {
+    "name": "Костя Третяк",
+    "email": "ktretiak.in.ua@gmail.com"
+  },
+  "keywords": [
+    "angular",
+    "contenteditable"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KostyaTretyak/ng-contenteditable/issues"
+  },
+  "main": "ng-contenteditable.umd.js",
+  "module": "ng-contenteditable.js",
+  "jsnext:main": "ng-contenteditable.js",
+  "typings": "ng-contenteditable.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
