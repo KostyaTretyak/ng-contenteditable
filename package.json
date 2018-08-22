@@ -1,6 +1,6 @@
 {
   "name": "ng-contenteditable",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -68,7 +68,7 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.7.2",
-    "zone.js": "^0.8.14"
+    "zone.js": "~0.8.26"
   },
   "engines": {
     "node": ">=6.0.0"
