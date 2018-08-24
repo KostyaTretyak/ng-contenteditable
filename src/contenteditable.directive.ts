@@ -4,8 +4,7 @@ import {
   Renderer2,
   HostListener,
   forwardRef,
-  Input,
-  OnInit
+  Input
 } from '@angular/core';
 
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -17,7 +16,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ContenteditableDirective), multi: true}
   ]
 })
-export class ContenteditableDirective implements ControlValueAccessor, OnInit {
+export class ContenteditableDirective implements ControlValueAccessor {
   @Input() propValueAccessor = 'textContent';
 
   private onChange: (value: string) => void;
@@ -25,10 +24,6 @@ export class ContenteditableDirective implements ControlValueAccessor, OnInit {
   private removeDisabledState: () => void;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
-
-  ngOnInit() {
-    this.propValueAccessor = this.propValueAccessor;
-  }
 
   @HostListener('input')
   callOnChange() {
