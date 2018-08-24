@@ -5,7 +5,7 @@ It just implements [ControlValueAccessor](https://angular.io/api/forms/ControlVa
 
 # Install
 
-You can just copy and paste this [directive](src/index.ts) or install it from npm:
+You can just copy and paste this [directive](src/contenteditable.directive.ts) or install it from npm:
 
 ```bash
 npm install ng-contenteditable --save
@@ -13,7 +13,7 @@ npm install ng-contenteditable --save
 
 # Usage
 
-Import and add `ContenteditableDirective` to your module:
+Import and add `ContenteditableModule` to your project:
 
 ```ts
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
