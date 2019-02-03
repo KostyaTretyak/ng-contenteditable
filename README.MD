@@ -95,3 +95,13 @@ this.elementRef.nativeElement[this.propValueAccessor]
 ```
 
 By default it using `textContent`.
+
+# Property `contenteditable` as @Input value
+
+Starting with version 2.1.0, `ng-contenteditable` accepts `contenteditable` as @Input property (note the square brackets):
+
+```html
+<p [contenteditable]="isContenteditable"></p>
+```
+
+where `isContenteditable` is a boolean variable.

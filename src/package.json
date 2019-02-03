@@ -1,6 +1,6 @@
 {
   "name": "ng-contenteditable",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/KostyaTretyak/ng-contenteditable"
@@ -20,5 +20,11 @@
   "main": "ng-contenteditable.umd.js",
   "module": "ng-contenteditable.js",
   "jsnext:main": "ng-contenteditable.js",
-  "typings": "ng-contenteditable.d.ts"
+  "typings": "ng-contenteditable.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4",
+    "typescript": "~2.9.1"
+  }
 }

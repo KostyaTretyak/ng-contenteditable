@@ -3,6 +3,7 @@ import {
   ElementRef,
   Renderer2,
   HostListener,
+  HostBinding,
   forwardRef,
   Input
 } from '@angular/core';
@@ -18,6 +19,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class ContenteditableDirective implements ControlValueAccessor {
   @Input() propValueAccessor = 'textContent';
+  @HostBinding('attr.contenteditable') @Input() contenteditable = true;
 
   private onChange: (value: string) => void;
   private onTouched: () => void;
